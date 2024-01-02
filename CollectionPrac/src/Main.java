@@ -3,7 +3,6 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-
     }
 
     public static void colorsArray() {
@@ -68,12 +67,6 @@ public class Main {
     private static ArrayList<Integer> qSort(ArrayList<Integer> arr) {
         if (arr.size() == 1 || arr.size() == 0) {
             return arr;
-        }
-        if (arr.size() == 2) {
-            ArrayList<Integer> sorted = new ArrayList<>();
-            sorted.add(Integer.min(arr.get(0), arr.get(1)));
-            sorted.add(Integer.max(arr.get(0), arr.get(1)));
-            return sorted;
         } else {
             final int pivot = (int) (Math.random() * arr.size());
             final int pivotItem = arr.get(pivot);

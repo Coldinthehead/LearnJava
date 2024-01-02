@@ -6,8 +6,7 @@ public class Main {
 
     }
 
-    public static void colorsArray()
-    {
+    public static void colorsArray() {
         ArrayList<String> colors = new ArrayList<>();
         colors.add("Red");
         colors.add("Green");
@@ -52,7 +51,7 @@ public class Main {
         array.remove(3);
     }
 
-    public static int searchArray(ArrayList<String> array,String element) {
+    public static int searchArray(ArrayList<String> array, String element) {
         for (int i = 0; i < array.size(); i++) {
             String toCheck = array.get(i);
             if (toCheck.equals(element)) {
@@ -66,35 +65,29 @@ public class Main {
         return qSort(array);
     }
 
-    private static ArrayList<Integer> qSort(ArrayList<Integer> arr)
-    {
+    private static ArrayList<Integer> qSort(ArrayList<Integer> arr) {
         if (arr.size() == 1 || arr.size() == 0) {
             return arr;
         }
-        if (arr.size() == 2)
-        {
+        if (arr.size() == 2) {
             ArrayList<Integer> sorted = new ArrayList<>();
             sorted.add(Integer.min(arr.get(0), arr.get(1)));
             sorted.add(Integer.max(arr.get(0), arr.get(1)));
             return sorted;
-        }
-        else
-        {
+        } else {
             final int pivot = (int) (Math.random() * arr.size());
             final int pivotItem = arr.get(pivot);
 
             ArrayList<Integer> left = new ArrayList<>();
             ArrayList<Integer> right = new ArrayList<>();
-            for (int i = 0; i < pivot; i++)
-            {
+            for (int i = 0; i < pivot; i++) {
                 Integer item = arr.get(i);
                 if (item > pivotItem)
                     right.add(item);
                 else
                     left.add(item);
             }
-            for (int i = pivot + 1; i < arr.size(); i++)
-            {
+            for (int i = pivot + 1; i < arr.size(); i++) {
                 Integer item = arr.get(i);
                 if (item > pivotItem)
                     right.add(item);

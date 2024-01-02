@@ -4,76 +4,25 @@ public class ArrayListExercises {
     public static void main(String[] args) {
         colorsArray();
         iterateArray();
-
-        ArrayList<Integer> numbers = new ArrayList<>();
-        for (int i = 10; i > 0; i--) {
-            numbers.add(i);
-        }
-        insertAtFirst(numbers);
-        System.out.println(numbers);
-
-        ArrayList<String> words = new ArrayList<>();
-        words.add("Foo");
-        words.add("Bar");
-        System.out.println(getItemFrom(words, 0));
-
-        updateElementAt(words, 1, "Fizz");
-        System.out.println(words);
-
-        words.clear();
-        words.add("Foo");
-        words.add("Bar");
-        words.add("Fizz");
-        removeThird(words);
-        System.out.println(words);
-
-        int fooIndex = searchArray(words, "Foo");
-        System.out.println(fooIndex);
-
-        ArrayList<Integer> sortedNumbers = sortArray(numbers);
-        System.out.println(sortedNumbers);
-
-        ArrayList<String> wordsCopy = createCopy(words);
-        System.out.println(wordsCopy);
-
-        shuffleArrayInPlace(numbers);
-        System.out.println(numbers);
-
-        System.out.println(numbers);
-        reverseArrayInPlace(numbers);
-        System.out.println(numbers);
-
-        System.out.println(numbers);
-        ArrayList<Integer> sliced = sliceArray(numbers, 2, 5);
-        System.out.println(sliced);
-
-        System.out.println(compareArrays(words, wordsCopy));
-        ArrayList<String> anotherWords = new ArrayList<>();
-        anotherWords.add("Fizz");
-        System.out.println(compareArrays(words, anotherWords));
-
-
-        System.out.println(words);
-        swapElements(words, 0, 1);
-        System.out.println(words);
-
-        System.out.println(concatArrays(words, anotherWords));
-
-        System.out.println(anotherWords);
-        clearInPlace(anotherWords);
-        System.out.println(anotherWords);
-
-        System.out.println(isEmpty(numbers));
-
-        trim(words);
-
-        increaseSizeTo(numbers,numbers.size() + 10);
-
-        System.out.println(numbers);
-        replaceSecond(numbers, 255);
-        System.out.println(numbers);
-
-        printArray(numbers);
+        insertAtFirst();
+        retrieveElement();
+        updateElement();
+        removeThird();
+        searchArray();
+        sortArray();
+        shuffleArray();
+        reverseArray();
+        createCopy();
+        sliceArray();
+        compareArrays();
+        swapElements();
+        concatArrays();
+        clearArray();
+        empty();
+        trim();
+        increaseSize();
+        replaceSecond();
+        printArray();
     }
 
     public static void colorsArray() {
@@ -83,17 +32,12 @@ public class ArrayListExercises {
         colors.add("Blue");
         colors.add("Yellow");
 
-        for (String color : colors) {
-            System.out.println(color);
-        }
+        System.out.println(colors);
+        printSep();
     }
 
     public static void iterateArray() {
-        ArrayList<Integer> numbers = new ArrayList<>();
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-        numbers.add(98);
+        ArrayList<Integer> numbers = getNumbersArray();
 
         for (int i = 0; i < numbers.size(); i++) {
             System.out.println("item at " + i + " " + numbers.get(i));
@@ -102,37 +46,56 @@ public class ArrayListExercises {
         for (Integer number : numbers) {
             System.out.println(number);
         }
+        printSep();
     }
 
-    public static void insertAtFirst(ArrayList<Integer> array) {
+    public static void insertAtFirst() {
+        ArrayList<Integer> numbers = getNumbersArray();
+        System.out.println(numbers);
         int number = 50;
-        array.set(0, number);
+        numbers.set(0, number);
+        System.out.println(number);
+        printSep();
     }
 
-    public static String getItemFrom(ArrayList<String> array, int index) {
-        return array.get(index);
+    public static void retrieveElement() {
+        ArrayList<String> words = getWordsArray();
+        String word = words.get(1);
+        words.remove(1);
+        printSep();
     }
 
-    public static void updateElementAt(ArrayList<String> array, int index, String element) {
-        array.set(index, element);
+    public static void updateElement() {
+        ArrayList<String> words = getWordsArray();
+        System.out.println(words);
+        words.set(1, "Fizz");
+        System.out.println(words);
+        printSep();
     }
 
-    public static void removeThird(ArrayList<String> array) {
-        array.remove(2);
+    public static void removeThird() {
+        ArrayList<Integer> numbers = getNumbersArray();
+        System.out.println(numbers);
+        numbers.remove(2);
+        System.out.println(numbers);
+        printSep();
     }
 
-    public static int searchArray(ArrayList<String> array, String element) {
-        for (int i = 0; i < array.size(); i++) {
-            String toCheck = array.get(i);
-            if (toCheck.equals(element)) {
-                return i;
-            }
-        }
-        return -1;
+    public static void searchArray() {
+        ArrayList<Integer> numbers = getNumbersArray();
+        System.out.println(numbers);
+        int searchIndex = 5;
+        int index = numbers.indexOf(searchIndex);
+        System.out.println(index);
+        printSep();
     }
 
-    public static ArrayList<Integer> sortArray(ArrayList<Integer> array) {
-        return qSort(array);
+    public static void sortArray() {
+        ArrayList<Integer> numbers = (ArrayList<Integer>) getNumbersArray().reversed();
+        System.out.println(numbers);
+        ArrayList<Integer> sorted = qSort(numbers);
+        System.out.println(sorted);
+        printSep();
     }
 
     private static ArrayList<Integer> qSort(ArrayList<Integer> arr) {
@@ -167,24 +130,30 @@ public class ArrayListExercises {
         }
     }
 
-    public static ArrayList<String> createCopy(ArrayList<String> arr) {
-        ArrayList<String> copy = new ArrayList<>(arr.size());
-        for (String element : arr) {
-            copy.add(element);
-        }
-        return copy;
+    public static void createCopy() {
+        ArrayList<String> words = new ArrayList<>();
+        System.out.println(words);
+        ArrayList<String> wordsCopy = new ArrayList<>();
+        System.out.println(wordsCopy);
+        printSep();
     }
 
-    public static void shuffleArrayInPlace(ArrayList<Integer> arr) {
+    public static void shuffleArray() {
+        ArrayList<Integer> arr = getNumbersArray();
+        System.out.println(arr);
         for (int i = 0; i < arr.size(); i++) {
             int current = arr.get(i);
             int shuffleIndex = (int) (Math.random() * arr.size());
             arr.set(i, arr.get(shuffleIndex));
             arr.set(shuffleIndex, current);
         }
+        System.out.println(arr);
+        printSep();
     }
 
-    public static void reverseArrayInPlace(ArrayList<Integer> arr) {
+    public static void reverseArray() {
+        ArrayList<Integer> arr = getNumbersArray();
+        System.out.println(arr);
         for (int i = 0; i < arr.size() / 2; i++) {
             int left = arr.get(i);
             int rightIndex = arr.size() - i - 1;
@@ -192,65 +161,128 @@ public class ArrayListExercises {
             arr.set(rightIndex, left);
             arr.set(i, right);
         }
+        System.out.println(arr);
+        printSep();
     }
 
-    public static ArrayList<Integer> sliceArray(ArrayList<Integer> arr, int start, int stop) {
-        ArrayList<Integer> result = new ArrayList<>();
+    public static void sliceArray() {
+        ArrayList<Integer> numbers = getNumbersArray();
+        int start = 2;
+        int stop = 5;
+        ArrayList<Integer> slice = new ArrayList<>();
         for (int i = start; i < stop; i++) {
-            result.add(arr.get(i));
+            slice.add(numbers.get(i));
         }
-        return result;
+        System.out.println(slice);
+        printSep();
     }
 
-    public static boolean compareArrays(ArrayList<String> first, ArrayList<String> second) {
+    public static void compareArrays() {
 
+        ArrayList<String> first = getWordsArray();
+        ArrayList<String> second = new ArrayList<String>();
+        second.add("Hello");
+        second.add("World");
+        boolean same = false;
         if (first.size() != second.size()) {
-            return false;
+            same = false;
         } else {
             for (int i = 0; i < first.size(); i++) {
                 if (!first.get(i).equals(second.get(i))) {
-                    return false;
+                    same = true;
+                    break;
                 }
             }
         }
-        return true;
+        System.out.println(same ? "same" : "not same");
+        printSep();
     }
 
-    public static void swapElements(ArrayList<String> arr, int first, int second) {
+    public static void swapElements() {
+        ArrayList<String> arr = getWordsArray();
+        System.out.println(arr);
+        int first = 0;
+        int second = 2;
         String temp = arr.get(first);
         arr.set(first, arr.get(second));
         arr.set(second, temp);
+        System.out.println(arr);
+        printSep();
     }
 
-    public static ArrayList<String> concatArrays(ArrayList<String> first, ArrayList<String> second) {
+    public static void concatArrays() {
+        ArrayList<String> first = getWordsArray();
+        ArrayList<String> second = getWordsArray();
         ArrayList<String> result = new ArrayList<>(first);
         result.addAll(second);
-        return result;
+        System.out.println(first);
+        System.out.println(second);
+        System.out.println(result);
+        printSep();
     }
 
-    public static void clearInPlace(ArrayList<String> arr) {
+    public static void clearArray() {
+        ArrayList<Integer> arr = getNumbersArray();
+        System.out.println(arr);
         arr.clear();
+        System.out.println(arr);
+        printSep();
     }
 
-    public static boolean isEmpty(ArrayList<Integer> arr) {
-        return arr.size() == 0;
+    public static void empty() {
+        ArrayList<String> arr = getWordsArray();
+        boolean isEmpty = arr.size() == 0;
+        System.out.println(arr);
+        System.out.println(isEmpty ? "empty" : "not empty");
+        printSep();
     }
 
-    public static void trim(ArrayList<String> arr) {
+    public static void trim() {
+        ArrayList<String> arr = getWordsArray();
         arr.trimToSize();
+        System.out.println(arr);
     }
 
-    public static void increaseSizeTo(ArrayList<Integer> arr, int newSize) {
+    public static void increaseSize() {
+        ArrayList<String> arr = getWordsArray();
+        int newSize = 10;
         arr.ensureCapacity(newSize);
+        System.out.println(arr);
+        printSep();
     }
 
-    public static void replaceSecond(ArrayList<Integer> arr, int newElement) {
-        arr.set(1, newElement);
+    public static void replaceSecond() {
+        ArrayList<String> arr = getWordsArray();
+        arr.set(1, "world");
+        System.out.println(arr);
+        printSep();
     }
 
-    public static void printArray(ArrayList<Integer> arr) {
-        for (int i = 0 ; i < arr.size(); i++) {
+    public static void printArray() {
+        ArrayList<String> arr = getWordsArray();
+        System.out.println(arr);
+        for (int i = 0; i < arr.size(); i++) {
             System.out.println(arr.get(i));
         }
+        printSep();
+    }
+
+    private static ArrayList<Integer> getNumbersArray() {
+        ArrayList<Integer> numbers = new ArrayList<>();
+        for (int i = 10; i > 0; i--) {
+            numbers.add(i);
+        }
+        return numbers;
+    }
+
+    private static ArrayList<String> getWordsArray() {
+        ArrayList<String> words = new ArrayList<>();
+        words.add("Foo");
+        words.add("Bar");
+        return words;
+    }
+
+    private static void printSep() {
+        System.out.println("=======================================");
     }
 }

@@ -91,7 +91,8 @@ public class ArrayListExercises {
     }
 
     public static void sortArray() {
-        ArrayList<Integer> numbers = (ArrayList<Integer>) getNumbersArray().reversed();
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.addAll(getNumbersArray().reversed());
         System.out.println(numbers);
         ArrayList<Integer> sorted = qSort(numbers);
         System.out.println(sorted);
@@ -200,6 +201,8 @@ public class ArrayListExercises {
 
     public static void swapElements() {
         ArrayList<String> arr = getWordsArray();
+        arr.add("Fizz");
+        arr.add("Buzz");
         System.out.println(arr);
         int first = 0;
         int second = 2;
@@ -277,8 +280,10 @@ public class ArrayListExercises {
 
     private static ArrayList<String> getWordsArray() {
         ArrayList<String> words = new ArrayList<>();
-        words.add("Foo");
-        words.add("Bar");
+        for (int i =0; i < 10) {
+            words.add("Foo");
+            words.add("Bar");
+        }
         return words;
     }
 

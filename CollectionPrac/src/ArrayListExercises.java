@@ -280,7 +280,7 @@ public class ArrayListExercises {
 
     private static ArrayList<String> getWordsArray() {
         ArrayList<String> words = new ArrayList<>();
-        for (int i =0; i < 10) {
+        for (int i =0; i < 10; i++) {
             words.add("Foo");
             words.add("Bar");
         }

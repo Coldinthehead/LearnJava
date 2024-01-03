@@ -12,6 +12,62 @@ public class HashSetExercises {
         convertToArray();
         convertToTreeSet();
         findInTreeSet();
+        compareTwoSets();
+        getCommonElements();
+        removeAll();
+    }
+
+    private static void removeAll() {
+        System.out.println("12. Write a Java program to remove all elements from a hash set.");
+        HashSet<Integer> numbers = getNumbers();
+        System.out.println(numbers);
+        numbers.clear();
+        System.out.println("after" + numbers);
+        printSep();
+    }
+
+    private static void getCommonElements() {
+        System.out.println("11. Write a Java program to compare two sets and retain elements that are the same.");
+        HashSet<Integer> first = getNumbers();
+        HashSet<Integer> seconds = getNumbers();
+        for (int i = 1; i < 5; i++) {
+            first.add(i * -3);
+            seconds.add(i *  3);
+        }
+        HashSet<Integer> in = new HashSet<>(first);
+        in.retainAll(seconds);
+        System.out.println(first + "" + seconds);
+        System.out.println("common : " + in);
+        printSep();
+    }
+
+    private static void compareTwoSets() {
+        System.out.println("10. Write a Java program to compare two hash set.");
+        HashSet<Integer> first = getNumbers();
+        HashSet<Integer> second = getNumbers();
+
+        String result = compareSets(first, second) ? " == "  : " != ";
+        System.out.println(first + result + second);
+
+        second.remove(3);
+        result = compareSets(first,second) ?  " == "  : " != ";
+        System.out.println(first + result + second);
+
+        first.remove(1);
+        result = compareSets(first,second) ?  " == "  : " != ";
+        System.out.println(first + result + second);
+
+        printSep();
+    }
+
+    private static boolean compareSets(HashSet<Integer> first, HashSet<Integer> second) {
+        if (first.size() == second.size()) {
+            HashSet<Integer> in = new HashSet<>(first);
+            in.removeAll(second);
+
+            return in.size() == 0;
+        }
+        return false;
     }
 
     private static void findInTreeSet() {

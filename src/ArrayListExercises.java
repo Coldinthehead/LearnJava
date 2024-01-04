@@ -28,6 +28,7 @@ public class ArrayListExercises {
     }
 
     public static void colorsArray() {
+        System.out.println("1. Write a Java program to create an array list, add some colors (strings) and print out the collection");
         ArrayList<String> colors = new ArrayList<>();
         colors.add("Red");
         colors.add("Green");
@@ -39,6 +40,7 @@ public class ArrayListExercises {
     }
 
     public static void iterateArray() {
+        System.out.println("2. Write a Java program to iterate through all elements in an array list.");
         ArrayList<Integer> numbers = getNumbersArray();
 
         for (int i = 0; i < numbers.size(); i++) {
@@ -52,6 +54,7 @@ public class ArrayListExercises {
     }
 
     public static void insertAtFirst() {
+        System.out.println("3. Write a Java program to insert an element into the array list at the first position.");
         ArrayList<Integer> numbers = getNumbersArray();
         System.out.println(numbers);
         int number = 50;
@@ -61,6 +64,7 @@ public class ArrayListExercises {
     }
 
     public static void retrieveElement() {
+        System.out.println("4. Write a Java program to retrieve an element (at a specified index) from a given array list.");
         ArrayList<String> words = getWordsArray();
         String word = words.get(1);
         words.remove(1);
@@ -68,6 +72,7 @@ public class ArrayListExercises {
     }
 
     public static void updateElement() {
+        System.out.println("5. Write a Java program to update an array element by the given element.");
         ArrayList<String> words = getWordsArray();
         System.out.println(words);
         words.set(1, "Fizz");
@@ -76,6 +81,7 @@ public class ArrayListExercises {
     }
 
     public static void removeThird() {
+        System.out.println("6. Write a Java program to remove the third element from an array list.");
         ArrayList<Integer> numbers = getNumbersArray();
         System.out.println(numbers);
         numbers.remove(2);
@@ -84,6 +90,7 @@ public class ArrayListExercises {
     }
 
     public static void searchArray() {
+        System.out.println("7. Write a Java program to search for an element in an array list.");
         ArrayList<Integer> numbers = getNumbersArray();
         System.out.println(numbers);
         int searchIndex = 5;
@@ -93,6 +100,7 @@ public class ArrayListExercises {
     }
 
     public static void sortArray() {
+        System.out.println("8. Write a Java program to sort a given array list.");
         ArrayList<Integer> numbers = new ArrayList<>();
         numbers.addAll(getNumbersArray().reversed());
         System.out.println(numbers);
@@ -134,6 +142,7 @@ public class ArrayListExercises {
     }
 
     public static void createCopy() {
+        System.out.println("9. Write a Java program to copy one array list into another.");
         ArrayList<String> words = new ArrayList<>();
         System.out.println(words);
         ArrayList<String> wordsCopy = new ArrayList<>();
@@ -142,6 +151,7 @@ public class ArrayListExercises {
     }
 
     public static void shuffleArray() {
+        System.out.println("10. Write a Java program to shuffle elements in an array list.");
         ArrayList<Integer> arr = getNumbersArray();
         System.out.println(arr);
         for (int i = 0; i < arr.size(); i++) {
@@ -155,6 +165,7 @@ public class ArrayListExercises {
     }
 
     public static void reverseArray() {
+        System.out.println("11. Write a Java program to reverse elements in an array list.");
         ArrayList<Integer> arr = getNumbersArray();
         System.out.println(arr);
         for (int i = 0; i < arr.size() / 2; i++) {
@@ -169,6 +180,7 @@ public class ArrayListExercises {
     }
 
     public static void sliceArray() {
+        System.out.println("12. Write a Java program to extract a portion of an array list.");
         ArrayList<Integer> numbers = getNumbersArray();
         int start = 2;
         int stop = 5;
@@ -181,7 +193,7 @@ public class ArrayListExercises {
     }
 
     public static void compareArrays() {
-
+        System.out.println("13. Write a Java program to compare two array lists.");
         ArrayList<String> first = getWordsArray();
         ArrayList<String> second = new ArrayList<String>();
         second.add("Hello");
@@ -202,6 +214,7 @@ public class ArrayListExercises {
     }
 
     public static void swapElements() {
+        System.out.println("14. Write a Java program that swaps two elements in an array list.");
         ArrayList<String> arr = getWordsArray();
         arr.add("Fizz");
         arr.add("Buzz");
@@ -216,6 +229,7 @@ public class ArrayListExercises {
     }
 
     public static void concatArrays() {
+        System.out.println("15. Write a Java program to join two array lists.");
         ArrayList<String> first = getWordsArray();
         ArrayList<String> second = getWordsArray();
         ArrayList<String> result = new ArrayList<>(first);
@@ -226,7 +240,8 @@ public class ArrayListExercises {
         printSep();
     }
 
-    public static void clearArray() {
+    public static void cloneArray() {
+        System.out.println("16. Write a Java program to clone an array list to another array list.");
         ArrayList<Integer> arr = getNumbersArray();
         System.out.println(arr);
         arr.clear();
@@ -234,7 +249,14 @@ public class ArrayListExercises {
         printSep();
     }
 
+    private static void clearArray()
+    {
+        System.out.println("17. Write a Java program to empty an array list.");
+
+    }
+
     public static void empty() {
+        System.out.println("18. Write a Java program to test whether an array list is empty or not.");
         ArrayList<String> arr = getWordsArray();
         boolean isEmpty = arr.size() == 0;
         System.out.println(arr);
@@ -243,12 +265,14 @@ public class ArrayListExercises {
     }
 
     public static void trim() {
+        System.out.println("19. Write a Java program for trimming the capacity of an array list.\n");
         ArrayList<String> arr = getWordsArray();
         arr.trimToSize();
         System.out.println(arr);
     }
 
     public static void increaseSize() {
+        System.out.println("20. Write a Java program to increase an array list size.\n");
         ArrayList<String> arr = getWordsArray();
         int newSize = 10;
         arr.ensureCapacity(newSize);
@@ -257,6 +281,7 @@ public class ArrayListExercises {
     }
 
     public static void replaceSecond() {
+        System.out.println("21. Write a Java program to replace the second element of an ArrayList with the specified element.");
         ArrayList<String> arr = getWordsArray();
         arr.set(1, "world");
         System.out.println(arr);
@@ -264,6 +289,7 @@ public class ArrayListExercises {
     }
 
     public static void printArray() {
+        System.out.println("22. Write a Java program to print all the elements of an ArrayList using the elements' position.");
         ArrayList<String> arr = getWordsArray();
         System.out.println(arr);
         for (int i = 0; i < arr.size(); i++) {

@@ -2,5 +2,5 @@
 *.class
 *.iml
 /out
-
+/target
 

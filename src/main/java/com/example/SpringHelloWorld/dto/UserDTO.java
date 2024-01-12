@@ -1,0 +1,11 @@
+package com.example.SpringHelloWorld.dto;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+public class UserDTO {
+    private int id;
+    private String username;
+}

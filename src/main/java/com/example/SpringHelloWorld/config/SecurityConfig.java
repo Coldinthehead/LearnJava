@@ -16,7 +16,8 @@ public class SecurityConfig {
                 .requestMatchers("/users/**").authenticated()
                 .anyRequest().permitAll())
                 .httpBasic(Customizer.withDefaults())
-                .formLogin(Customizer.withDefaults());
+                .formLogin(Customizer.withDefaults())
+                .csrf().disable();
         return http.build();
     }
 }

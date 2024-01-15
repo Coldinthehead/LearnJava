@@ -37,4 +37,11 @@ public class UserService {
     public void delete(User user) {
         userRepository.delete(user);
     }
+
+    public User create(String username, String password) {
+        final User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        return save(user);
+    }
 }

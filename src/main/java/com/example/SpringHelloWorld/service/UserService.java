@@ -3,6 +3,7 @@ package com.example.SpringHelloWorld.service;
 import com.example.SpringHelloWorld.entity.User;
 import com.example.SpringHelloWorld.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +14,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public List<User> getAll() {
         return userRepository.findAll();
@@ -41,7 +45,7 @@ public class UserService {
     public User create(String username, String password) {
         final User user = new User();
         user.setUsername(username);
-        user.setPassword(password);
+        user.setPassword(passwordEncoder.encode(password));
         return save(user);
     }
 }

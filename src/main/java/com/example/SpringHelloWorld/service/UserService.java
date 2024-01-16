@@ -35,7 +35,11 @@ public class UserService {
     }
 
     public User update(User updatedUser) {
-        return userRepository.save(updatedUser);
+        final User dbUser = get(updatedUser.getId());
+        if (dbUser == null)
+            return null;
+        dbUser.setUsername(updatedUser.getUsername());
+        return save(dbUser);
     }
 
     public void delete(User user) {

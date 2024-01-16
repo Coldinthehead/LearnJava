@@ -7,7 +7,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -24,7 +23,7 @@ public class UserController {
     @Autowired
     private ModelMapper modelMapper;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<UserDTO>> get() {
         List<UserDTO> users =
                 userService.getAll().stream()
@@ -39,21 +38,20 @@ public class UserController {
         return new ResponseEntity<>(modelMapper.map(user, UserDTO.class), HttpStatus.OK);
     }
 
-    @PutMapping("/add")
+    @PostMapping
     public ResponseEntity<UserDTO> create(@RequestBody User user) {
         User savedUser = userService.save(user);
         return new ResponseEntity<>(modelMapper.map(savedUser, UserDTO.class), HttpStatus.CREATED);
     }
 
-    @PostMapping("/update/{id}")
-    public ResponseEntity<UserDTO> update(@PathVariable Integer id, @RequestBody User updatedUser) {
-        if (userService.findById(id) == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        updatedUser.setId(id);
-        User savedUser = userService.save(updatedUser);
-        return new ResponseEntity<>(modelMapper.map(savedUser, UserDTO.class), HttpStatus.OK);
+    @PutMapping
+    public ResponseEntity<UserDTO> update(@RequestBody User updatedUser) {
+        final User user = userService.update(updatedUser);
+        if (user == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(modelMapper.map(user, UserDTO.class), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         User user = userService.findById(id);
         if (user == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
